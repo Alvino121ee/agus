@@ -1,0 +1,87 @@
+{
+  "typography": {
+    "headings": "IBM Plex Sans",
+    "body": "Inter",
+    "data_numbers": "JetBrains Mono",
+    "weights": "Medium (500) for standard, Bold (700) for headers",
+    "rules": "Use tight letter spacing (tracking-tight) for headings. Monospace MUST be used for all financial data, metrics, and timestamps. Text Size Hierarchy: H1 max text-4xl sm:text-5xl. Use tabular-nums utility in Tailwind."
+  },
+  "colors": {
+    "archetype": "Swiss & High-Contrast (Dark Mode Trading Terminal)",
+    "background": {
+      "base": "#0B0E14",
+      "panel": "#131722",
+      "surface_elevated": "#1C2130"
+    },
+    "text": {
+      "primary": "#F8FAFC",
+      "secondary": "#94A3B8",
+      "muted": "#475569"
+    },
+    "accents": {
+      "profit_buy": "#10B981",
+      "loss_sell": "#EF4444",
+      "warning": "#F59E0B",
+      "info": "#3B82F6",
+      "brand_primary": "#6366F1"
+    },
+    "rules": "Never use pure #000000. Separate panels with background steps, not shadows. Saturated colors are STRICTLY reserved for financial statuses (profit/loss, live/stopped). Use 1px thin low-opacity dividers (border-white/10) instead of zebra stripes in tables."
+  },
+  "visual_enhancers": {
+    "surface_strategy": "Grid Borders (The Technical Look). Exposed skeleton, border-collapse style layout. Dashboard cards use flat backgrounds, 1px subtle border, no shadow.",
+    "textures": "Subtle noise overlay on the body background to break digital flatness.",
+    "badges": "Use sharp corners (rounded-none or rounded-sm max) for status badges (DRAFT, APPROVED, LIVE).",
+    "glassmorphism": "Avoid in data-dense areas. Use solid, opaque colors (#0B0E14) for fixed headers and sidebars to prevent data refraction."
+  },
+  "components": {
+    "table": "Dense structure. 1px border-b border-white/5 for rows. Header row with uppercase text-xs tracking-wider text-secondary. Right-align all numeric columns.",
+    "sidebar": "Darkest background (#0B0E14), 1px right border (border-white/10). Active link has left 2px solid brand_primary border, no background fill.",
+    "cards": "Cardless or sharp rectangular styles. Dense internal spacing (p-4 or p-6).",
+    "buttons": "Sharp edges (rounded-sm), crisp interaction. Hover state must explicitly lighten background.",
+    "timeline": "Decision Timeline: Minimalist vertical line. Nodes colored by agent decision (Green=Agree, Red=Veto). No hidden chain of thought, just summary codes.",
+    "charts": "Shadcn Charts / Recharts. Equity curve must use gradient fill under the line to show volume/area. Tooltips must have opaque backgrounds.",
+    "alerts": "Emergency Stop must be a highly visible button (Red) in the top nav."
+  },
+  "grids_and_layouts": {
+    "general": "High Density Grid (Mode B). grid-cols-1 md:grid-cols-4 or lg:grid-cols-6. Tight gaps (gap-4).",
+    "agent_control_center": "Table view taking col-span-full. Clicking an agent opens a side drawer or right-side panel for detailed drilldown (Status, Score, Decision, Reason, Confidence) without leaving the context.",
+    "strategy_lab": "Bento grid for Strategy creation. Split view: Left parameters, Right backtest preview.",
+    "spacing": "Tight padding for data cells (p-2 to p-4), clear separation between major sections."
+  },
+  "motion": {
+    "interactions": "Hover states must be instantaneous for data fields. Micro-interactions on buttons (scale down slightly on active).",
+    "live_data": "Use a blinking dot (animate-pulse) for 'LIVE' connections (MT5) or 'Running Agents'.",
+    "transitions": "Use specific transition properties (transition-colors duration-150). Do NOT use transition-all."
+  },
+  "accessibility": {
+    "contrast": "Ensure text vs background meets minimum 4.5:1. Red/Green colors must be tuned for dark mode visibility.",
+    "testing": "All interactive elements, buttons, rows, and agent details MUST have data-testid attributes (e.g., data-testid='agent-veto-button', data-testid='emergency-stop').",
+    "disclaimer": "CRITICAL: The website MUST clearly state 'AI does not guarantee profit' in a visible footer or banner."
+  },
+  "media_and_icons": {
+    "icons": "Use lucide-react. Stroke width 1.5 for a sharp, technical look.",
+    "empty_states": "Minimalist icon + subtle secondary text. No large illustrations."
+  },
+  "3d_libraries": {
+    "recommendation": "Not necessary for a pure trading terminal. Use lightweight 2D data visualizations (Recharts) to maintain extreme performance and density."
+  },
+  "image_urls": {},
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic outputs. Break the mold by applying 'The Technical Look': sharp edges, monospaced numerals, and exposed grid borders.",
+    "DO NOT use generic centered layouts. Left-align data tables and text, strictly right-align financial numbers.",
+    "Create depth using background color steps (e.g., #0B0E14 to #131722), not drop shadows.",
+    "Never use AI assistant emojis (🤖🧠). Use clean lucide-react icons.",
+    "Use JetBrains Mono or similar monospaced font for ALL numeric data (prices, win rates, expectancies, timestamps, agent scores).",
+    "All interactive elements must include data-testid.",
+    "Trading implies high risk: ensure the UI feels serious, rigorous, and explicitly displays the required disclaimer: 'AI does not guarantee profit.'"
+  ],
+  "instructions_to_main_agent": [
+    "Install standard dependencies: lucide-react, recharts (for equity curve/analytics), and clsx/tailwind-merge for utility classes.",
+    "Set up Tailwind config with custom colors: background-base (#0B0E14), background-panel (#131722), profit, loss, warning, info.",
+    "Build a persistent Sidebar Navigation and a Topbar. The Topbar must contain the Paper/Demo/Live mode toggle and the Emergency Stop + Close All Positions controls.",
+    "Implement the Agent Control Center with a dense data table. Include the 10 specific agents: Market Scanner, Market Structure Analyst, Technical Analyst, Price Action Agent, Strategy Builder, Risk/Reward Optimizer, Strategy Critic, Market Regime Agent, Historical Validation Agent, Final Decision Agent.",
+    "Implement the Decision Timeline showing timestamped agent execution flow (consensus voting + veto).",
+    "Ensure the Strategy Lab displays status badges correctly (DRAFT, BACKTESTING, VALIDATING, APPROVED, LIVE, PAUSED, REJECTED).",
+    "Ensure all components are customized for a dense, dark-mode, border-heavy 'terminal' look with minimal border-radius."
+  ]
+}
